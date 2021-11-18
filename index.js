@@ -8,6 +8,7 @@ const { MongoClient } = require('mongodb');
 const port = process.env.PORT || 5000;
 
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+// const serviceAccount = ('./doctors-portal-7cf60-firebase-adminsdk-jc4bp-a9b99d3bbd.json');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -16,8 +17,7 @@ admin.initializeApp({
 app.use(cors());
 app.use(express.json());
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.swu9d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.hda5d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function verifyToken(req, res, next) {
@@ -128,3 +128,6 @@ app.listen(port, () => {
 // app.delete('/users/:id')
 // users: get
 // users: post
+
+// DB_USER=doctorsPortal
+// DB_PASS=BPYo2uv5Uqbdpoe1
